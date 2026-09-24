@@ -1,0 +1,165 @@
+/* ===== Variáveis ===== */
+:root {
+  --bg: #f3f4f6;
+  --surface: #ffffff;
+  --ink: #1f2328;
+  --muted: #5f6670;
+  --river: #4b5563;
+  --river-dark: #2f3640;
+  --sun: #9ca3af;
+  --line: #d9dde2;
+  --radius: 10px;
+  --font-title: "Bricolage Grotesque", "Segoe UI", sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+}
+
+/* ===== Base ===== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+body {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+ul { list-style: none; }
+a:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+
+/* ===== Cabeçalho ===== */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3.5rem 8% 1.5rem;
+  color: #fff;
+  background: var(--river-dark);
+  border-bottom: 6px solid var(--sun);
+}
+.header__name {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  line-height: 1.05;
+  max-width: 14ch;
+}
+.header__role { margin-top: 0.8rem; font-size: 1.15rem; color: #bbcbcb; }
+
+.nav__list { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; }
+.nav__link {
+  display: inline-block;
+  padding: 0.4rem 0;
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+.nav__link:hover { border-color: var(--sun); }
+
+/* ===== Conteúdo ===== */
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 5% 3rem;
+}
+.section { padding: 2.5rem 0 0.5rem; }
+.section__title {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  color: var(--river);
+  margin-bottom: 1.2rem;
+}
+.section__text { max-width: 70ch; margin-bottom: 0.9rem; }
+
+/* ===== Cards (Flexbox) ===== */
+.cards { display: flex; flex-wrap: wrap; gap: 20px; }
+.card {
+  flex: 1 1 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--river);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(14, 90, 75, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(14, 90, 75, 0.16); }
+.card__title { font-family: var(--font-title); font-size: 1.15rem; line-height: 1.25; }
+.card__meta { color: var(--muted); font-size: 0.95rem; }
+.card__status { font-weight: 600; color: var(--river); }
+.card__link {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  background: var(--river);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.card__link:hover { background: var(--river-dark); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tags li {
+  padding: 0.15rem 0.7rem;
+  font-size: 0.9rem;
+  background: #cdd6d6;
+  border-radius: 999px;
+}
+
+/* ===== Contato ===== */
+.contact { display: flex; flex-wrap: wrap; gap: 20px; font-style: normal; }
+.contact__item {
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  padding: 1.2rem 1.4rem;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-decoration: none;
+  word-break: break-word;
+  transition: border-color 0.2s, background 0.2s;
+}
+.contact__item:hover { border-color: var(--river); background: #cbdcdc; }
+.contact__label { font-weight: 600; color: var(--river); }
+
+/* ===== Rodapé ===== */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding: 1.5rem 8%;
+  font-size: 0.95rem;
+  color: #cbdcdc;
+  background: var(--river-dark);
+}
+
+/* ===== Responsividade ===== */
+@media (min-width: 900px) {
+  .header { flex-direction: row; justify-content: space-between; align-items: flex-end; }
+  .nav__list { justify-content: flex-end; max-width: 26rem; }
+}
+
+@media (max-width: 600px) {
+  .header { padding: 2.2rem 6% 1rem; gap: 1.2rem; }
+  .nav__list { flex-direction: column; gap: 0; }
+  .nav__link { display: block; padding: 0.55rem 0; }
+  .card { flex-basis: 100%; }
+  .footer { flex-direction: column; padding: 1.2rem 6%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card, .card:hover { transition: none; transform: none; }
+}
